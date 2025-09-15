@@ -2,7 +2,7 @@ package com.example.hahaton.data.repository
 
 import com.example.hahaton.data.model.Event
 
-class EventStorage {
+object EventStorage {
     private val events = mutableListOf<Event>()
 
     init {
@@ -31,6 +31,6 @@ class EventStorage {
     }
 
     fun deleteEvent(event: Event) {
-        
+        events.
     }
 }

@@ -5,6 +5,8 @@ data class Event(
     val title: String,
     val description: String = "",
     val date: Long = System.currentTimeMillis(),
+
+    val speakers: List<Speaker>? = null,
 ) {
     fun getFormattedDate(): String {
         return "15.09.2025"
