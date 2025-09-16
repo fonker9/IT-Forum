@@ -35,13 +35,17 @@ class EventsFragment : Fragment() {
 
         // Данные для примера
         val events = listOf("Event 1", "Event 2", "Event 3", "Event 4", "Event 5")
+        val eventsPast = listOf("Past Event 1", "Past Event 2")
 
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerEvents)
 
-        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        val adapter: EventAdapter = EventAdapter(events)
+        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.adapter = EventAdapter(events)
 
-        recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = adapter
+
+        val recyclerViewPast: RecyclerView = view.findViewById(R.id.recyclerEventsPast)
+
+        recyclerViewPast.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        recyclerViewPast.adapter = EventAdapter(eventsPast)
     }
 }

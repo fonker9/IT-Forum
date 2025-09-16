@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.hahaton.databinding.FragmentHomeBinding
 import com.example.hahaton.ui.events.EventsFragment
 import com.example.hahaton.R
+import com.example.hahaton.ui.news.NewsFragment
 
 class HomeFragment : Fragment() {
 
@@ -35,6 +36,17 @@ class HomeFragment : Fragment() {
         val buttonEvents: Button = binding.buttonEvents
         buttonEvents.setOnClickListener {
             val fragment = EventsFragment()
+
+            childFragmentManager.beginTransaction().apply {
+                replace(R.id.fragment_home, fragment)
+                addToBackStack(null)
+                commit()
+            }
+        }
+
+        val buttonNews: Button = binding.buttonNews
+        buttonNews.setOnClickListener {
+            val fragment = NewsFragment()
 
             childFragmentManager.beginTransaction().apply {
                 replace(R.id.fragment_home, fragment)
