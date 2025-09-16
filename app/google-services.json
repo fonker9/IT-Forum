@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "553027502224",
+    "project_id": "it-forum-hahaton",
+    "storage_bucket": "it-forum-hahaton.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:553027502224:android:c674ffc1ca6c4dc1f75815",
+        "android_client_info": {
+          "package_name": "com.example.hahaton"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKZOVPosBwW483K8V7JmRRz6H3O2YkTI8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
