@@ -31,7 +31,7 @@ class EventsAdapter : ListAdapter<Event, EventsAdapter.ViewHolder>(DiffCallback(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_event2, parent, false)
+            .inflate(R.layout.item_event, parent, false)
 
         return ViewHolder(view)
     }

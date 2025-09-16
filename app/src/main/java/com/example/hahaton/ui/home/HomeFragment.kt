@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.replace
@@ -49,7 +50,6 @@ class HomeFragment : Fragment() {
             }
         }
 
-//        val listener = fs.collection("events").addSnapshotListener {  }
 
         val buttonAdd: Button = binding.buttonNotifications
         buttonAdd.setOnClickListener {
@@ -64,7 +64,6 @@ class HomeFragment : Fragment() {
                 )
              }
 
-
         val buttonNews: Button = binding.buttonNews
         buttonNews.setOnClickListener {
             val fragment = NewsFragment()
@@ -74,11 +73,6 @@ class HomeFragment : Fragment() {
                 addToBackStack(null)
                 commit()
             }
-        }
-
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
         }
 
         return root

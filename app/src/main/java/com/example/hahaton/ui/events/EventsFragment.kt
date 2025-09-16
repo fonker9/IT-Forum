@@ -17,14 +17,16 @@ import com.example.hahaton.data.model.Event
 import com.example.hahaton.ui.EventAdapter
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class EventsFragment : Fragment() {
     private var _binding: FragmentHomeEventsBinding? = null
-
     private val binding get() = _binding!!
+
+    private var _firebaseListener: ListenerRegistration? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,17 +34,15 @@ class EventsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeEventsBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        return root
+        return binding.root
     }
-    val fs: FirebaseFirestore = Firebase.firestore
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val adapater: EventsAdapter = EventsAdapter()
 
-        val eventsListener = fs.collection("events")
+        _firebaseListener = Firebase.firestore.collection("events")
             .addSnapshotListener { snapshot, e ->
                 if (e != null) {
                     Log.w("EventsFragment", "Listen failed.", e)
@@ -63,7 +63,6 @@ class EventsFragment : Fragment() {
             }
 
         // Данные для примера
-        val events = listOf("Event 1", "Event 2", "Event 3", "Event 4", "Event 5")
         val eventsPast = listOf("Past Event 1", "Past Event 2")
 
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerEvents)
@@ -76,5 +75,11 @@ class EventsFragment : Fragment() {
 
         recyclerViewPast.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         recyclerViewPast.adapter = EventAdapter(eventsPast)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+        _firebaseListener = null
     }
 }
