@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hahaton.data.repository.EventStorage
-import com.example.hahaton.databinding.FragmentDashboardBinding
 import com.example.hahaton.databinding.FragmentProgramBinding
 import com.example.hahaton.ui.events.EventsAdapter
 import java.util.Timer

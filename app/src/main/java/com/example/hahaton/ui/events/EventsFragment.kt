@@ -38,8 +38,10 @@ class EventsFragment : Fragment() {
     }
     val fs: FirebaseFirestore = Firebase.firestore
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         super.onViewCreated(view, savedInstanceState)
+
+        val adapater: EventsAdapter = EventsAdapter()
+
         val eventsListener = fs.collection("events")
             .addSnapshotListener { snapshot, e ->
                 if (e != null) {
@@ -55,6 +57,8 @@ class EventsFragment : Fragment() {
                         val event = doc.toObject(Event::class.java) ?: continue
                         events.add(event)
                     }
+
+                    adapater.submitList(events)
                 }
             }
 
@@ -65,7 +69,7 @@ class EventsFragment : Fragment() {
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerEvents)
 
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        recyclerView.adapter = EventAdapter(events)
+        recyclerView.adapter = adapater
 
 
         val recyclerViewPast: RecyclerView = view.findViewById(R.id.recyclerEventsPast)

@@ -2,7 +2,7 @@ package com.example.hahaton.data.model
 
 data class Event(
     val id: Long = System.currentTimeMillis(),
-    val title: String,
+    val title: String = "",
     val description: String = "",
     val date: Long = System.currentTimeMillis(),
 

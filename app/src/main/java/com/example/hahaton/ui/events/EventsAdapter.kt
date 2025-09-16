@@ -22,7 +22,7 @@ class EventsAdapter : ListAdapter<Event, EventsAdapter.ViewHolder>(DiffCallback(
     }
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        private val titleTextView: TextView = itemView.findViewById(R.id.tvTitle)
+        private val titleTextView: TextView = itemView.findViewById(R.id.eventTitle)
 
         fun bind(event: Event) {
             titleTextView.text = event.title
@@ -31,7 +31,7 @@ class EventsAdapter : ListAdapter<Event, EventsAdapter.ViewHolder>(DiffCallback(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_event, parent, false)
+            .inflate(R.layout.item_event2, parent, false)
 
         return ViewHolder(view)
     }
