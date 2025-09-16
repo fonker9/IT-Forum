@@ -4,10 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.replace
 import androidx.lifecycle.ViewModelProvider
 import com.example.hahaton.databinding.FragmentHomeBinding
+import com.example.hahaton.ui.events.EventsFragment
+import com.example.hahaton.R
 
 class HomeFragment : Fragment() {
 
@@ -28,10 +32,22 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        val buttonEvents: Button = binding.buttonEvents
+        buttonEvents.setOnClickListener {
+            val fragment = EventsFragment()
+
+            childFragmentManager.beginTransaction().apply {
+                replace(R.id.fragment_home, fragment)
+                addToBackStack(null)
+                commit()
+            }
+        }
+
         val textView: TextView = binding.textHome
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+
         return root
     }
 
