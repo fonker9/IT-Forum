@@ -12,10 +12,15 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.hahaton.databinding.FragmentHomeBinding
 import com.example.hahaton.ui.events.EventsFragment
 import com.example.hahaton.R
+import com.example.hahaton.data.model.Event
 import com.example.hahaton.ui.news.NewsFragment
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import kotlin.text.set
 
 class HomeFragment : Fragment() {
-
+    val fs: FirebaseFirestore = Firebase.firestore
     private var _binding: FragmentHomeBinding? = null
 
     // This property is only valid between onCreateView and
@@ -43,6 +48,22 @@ class HomeFragment : Fragment() {
                 commit()
             }
         }
+
+//        val listener = fs.collection("events").addSnapshotListener {  }
+
+        val buttonAdd: Button = binding.buttonNotifications
+        buttonAdd.setOnClickListener {
+            fs.collection("events")
+                .document().set(
+                    Event(
+                        System.currentTimeMillis(),
+                        "Название",
+                        "Описание",
+                        System.currentTimeMillis()
+                    )
+                )
+             }
+
 
         val buttonNews: Button = binding.buttonNews
         buttonNews.setOnClickListener {
