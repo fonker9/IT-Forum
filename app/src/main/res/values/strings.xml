@@ -1,6 +1,12 @@
 <resources>
-    <string name="app_name">Hahaton</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="app_name">IT-Форум 😎</string>
+    <string name="title_home">Главная</string>
+    <string name="title_dashboard">Чё-та</string>
+    <string name="title_notifications">Чё-та №2</string>
+    <string name="title_profile">Профиль</string>
+
+    <string name="button_events">Мероприятия</string>
+    <string name="button_news">Новости</string>
+
+    <string name="home_title">Международный IT-форум</string>
 </resources>
