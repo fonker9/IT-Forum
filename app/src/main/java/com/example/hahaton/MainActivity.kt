@@ -33,17 +33,7 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_home, R.id.navigation_program, R.id.navigation_notifications, R.id.navigation_profile
-            )
-        )
 
-        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-        if (supportActionBar != null) {
-            supportActionBar!!.hide()
-        }
     }
 }
