@@ -13,6 +13,7 @@ import com.example.hahaton.data.repository.EventStorage
 import com.example.hahaton.databinding.FragmentHomeEventsBinding
 import com.example.hahaton.R
 import com.example.hahaton.ui.EventAdapter
+import com.google.firebase.Firebase
 
 class EventsFragment : Fragment() {
     private var _binding: FragmentHomeEventsBinding? = null
@@ -34,13 +35,15 @@ class EventsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Данные для примера
-        val events = listOf("Event 1", "Event 2", "Event 3", "Event 4", "Event 5")
-        val eventsPast = listOf("Past Event 1", "Past Event 2")
+        val adapter = EventsAdapter()
+        val adapterPast = EventsAdapter()
+
+        val fs = Firebase.
 
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerEvents)
 
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        recyclerView.adapter = EventAdapter(events)
+        recyclerView.adapter = EventsAdapter()
 
 
         val recyclerViewPast: RecyclerView = view.findViewById(R.id.recyclerEventsPast)

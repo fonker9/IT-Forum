@@ -1,4 +1,4 @@
-package com.example.hahaton.ui.dashboard
+package com.example.hahaton.ui.program
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

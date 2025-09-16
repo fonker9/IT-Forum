@@ -30,9 +30,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//        val fs: FirebaseFirestore = Firebase.firestore
-//        fs.collection("events")
-//            .document().set(mapOf("name" to "event"))
+        val fs: FirebaseFirestore = Firebase.firestore
+        fs.collection("events")
+            .document().set(mapOf("name" to "event"))
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

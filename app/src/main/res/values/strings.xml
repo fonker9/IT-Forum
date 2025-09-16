@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">IT-Форум 😎</string>
     <string name="title_home">Главная</string>
-    <string name="title_dashboard">Чё-та</string>
+    <string name="title_program">Программа</string>
     <string name="title_notifications">Чё-та №2</string>
     <string name="title_profile">Профиль</string>
 
