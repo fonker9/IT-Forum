@@ -7,6 +7,9 @@ android {
     namespace = "com.example.hahaton"
     compileSdk = 36
 
+    buildFeatures {
+        viewBinding = true
+    }
     defaultConfig {
         applicationId = "com.example.hahaton"
         minSdk = 24

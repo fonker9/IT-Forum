@@ -31,6 +31,6 @@ object EventStorage {
     }
 
     fun deleteEvent(event: Event) {
-        events.
+
     }
 }
