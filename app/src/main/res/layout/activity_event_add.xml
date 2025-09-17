@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <!-- Заголовок -->
+    <TextView
+        android:id="@+id/Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Мероприятия"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:paddingBottom="8dp" />
+
+    <!-- Здесь может быть календарь / ViewPager / кастомный календарь -->
+
+    <!-- Кнопки для переключения -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/Program"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Программа" />
+
+        <Button
+            android:id="@+id/Speakers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Спикеры"
+            android:layout_marginStart="8dp"/>
+
+        <Button
+            android:id="@+id/Partners"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Партнеры"
+            android:layout_marginStart="8dp"/>
+    </LinearLayout>
+
+    <!-- Контейнер для фрагментов -->
+    <FrameLayout
+        android:id="@+id/FragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white"/>
+
+</LinearLayout>
