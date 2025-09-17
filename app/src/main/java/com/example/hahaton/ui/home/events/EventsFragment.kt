@@ -1,4 +1,4 @@
-package com.example.hahaton.ui.events
+package com.example.hahaton.ui.home.events
 
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -6,15 +6,18 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.hahaton.data.repository.EventStorage
+import com.example.hahaton.data.repository.EventRepository
 import com.example.hahaton.databinding.FragmentHomeEventsBinding
 import com.example.hahaton.R
 import com.example.hahaton.data.model.Event
 import com.example.hahaton.ui.EventAdapter
+import com.example.hahaton.ui.home.events.EventsAdapter
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.ListenerRegistration
