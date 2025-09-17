@@ -1,5 +1,6 @@
 package com.example.hahaton.ui.home.events
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
@@ -16,7 +17,7 @@ import com.example.hahaton.databinding.FragmentHomeEventsBinding
 import com.example.hahaton.R
 import com.example.hahaton.data.model.Event
 import com.example.hahaton.ui.EventAdapter
-import com.example.hahaton.ui.home.events.EventsAdapter
+import com.example.hahaton.ui.admin.EventAddActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
@@ -92,7 +93,8 @@ class EventsFragment : Fragment() {
         }
 
         buttonAdmin.setOnClickListener {
-
+            val intent = Intent(requireContext(), EventAddActivity::class.java)
+            startActivity(intent)
         }
 
     }
