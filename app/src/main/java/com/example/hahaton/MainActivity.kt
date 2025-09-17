@@ -15,18 +15,21 @@ import com.google.firebase.ktx.Firebase
 
 //для крутилки событий
 import android.widget.Button
+import androidx.activity.compose.setContent
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hahaton.data.model.Event
 import com.example.hahaton.ui.EventAdapter
-
+import com.example.hahaton.ui.login.LoginScreen
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import com.example.hahaton.ui.login.LoginScreen
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
