@@ -7,7 +7,12 @@ import com.example.hahaton.data.model.Speaker
 import com.example.hahaton.data.model.SubEvent
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.firestore
+import kotlinx.coroutines.async
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
 import java.text.SimpleDateFormat
 
@@ -15,6 +20,27 @@ class FirebaseEventDataSource {
     private val db = Firebase.firestore
     private val eventsCollection = db.collection("events")
 
+    private suspend fun buildEventsList(snapshot: QuerySnapshot): List<Event> {
+        val result: MutableList<Event> = ArrayList()
+
+        snapshot.documents.forEach { doc ->
+            val snapshotSubevents = doc.reference.collection("subevents").get().await()
+
+            val event = doc.toObject(Event::class.java)
+            if (event != null) {
+                snapshotSubevents.documents.forEach { docSubevent ->
+                    val subevent = docSubevent.toObject(SubEvent::class.java)
+                    if (subevent != null) {
+                        event.subevents.add(subevent)
+                    }
+                }
+
+                result.add(event)
+            }
+        }
+
+        return result
+    }
 
     fun saveEvent(event: Event, subevents: List<SubEvent>) {
         eventsCollection.document(event.id).set(event)
@@ -27,9 +53,25 @@ class FirebaseEventDataSource {
     suspend fun getEvents(): List<Event> {
         val snapshot = eventsCollection.get().await()
 
-        Log.d("test", snapshot.isEmpty.toString())
+        return buildEventsList(snapshot)
+    }
 
-        return listOf()
+    fun getEventsRealTime(): Flow<List<Event>> = callbackFlow {
+        val subscription = eventsCollection.addSnapshotListener { snapshot, e ->
+            if (e != null) {
+                close(e)
+                return@addSnapshotListener
+            }
+
+            async {
+                if (snapshot != null) {
+                    val events = buildEventsList(snapshot)
+                    trySend(events)
+                }
+            }
+        }
+
+        awaitClose { subscription.remove() }
     }
 
     suspend fun getEvent(id: String): Event? {
@@ -48,7 +90,7 @@ class FirebaseEventDataSource {
                         SimpleDateFormat("dd.MM.yyyy hh:mm").parse("17.09.2025 18:30")
                     ),
                     SubEvent(
-                        "UNIQUE_1",
+                        "UNIQUE_2",
                         "Собрание",
                         Speaker("UNIQUE_1", "Александр", "Голунов", "Владимирович"),
                         SimpleDateFormat("dd.MM.yyyy hh:mm").parse("17.09.2025 18:30")
