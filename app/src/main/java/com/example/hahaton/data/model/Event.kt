@@ -1,14 +1,11 @@
 package com.example.hahaton.data.model
 
-data class Event(
-    val id: Long = System.currentTimeMillis(),
-    val title: String = "",
-    val description: String = "",
-    val date: Long = System.currentTimeMillis(),
+import java.util.Date
 
-    val speakers: List<Speaker>? = null,
-) {
-    fun getFormattedDate(): String {
-        return "15.09.2025"
-    }
-}
+data class Event(
+    val id: String,
+    val title: String,
+    val description: String,
+    val date: Date,
+    val speakers: List<Speaker>?
+)

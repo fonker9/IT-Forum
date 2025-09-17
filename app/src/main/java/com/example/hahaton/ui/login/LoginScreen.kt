@@ -33,6 +33,7 @@ fun LoginScreen(
     val passwordState = remember {
         mutableStateOf("")
     }
+
     Log.d("MyLog", "User email: ${auth.currentUser?.email}")
     Column(
         modifier = Modifier.fillMaxSize(),

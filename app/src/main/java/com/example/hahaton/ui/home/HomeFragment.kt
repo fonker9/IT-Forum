@@ -5,20 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageButton
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.replace
 import androidx.lifecycle.ViewModelProvider
 import com.example.hahaton.databinding.FragmentHomeBinding
-import com.example.hahaton.ui.events.EventsFragment
+import com.example.hahaton.ui.home.events.EventsFragment
 import com.example.hahaton.R
 import com.example.hahaton.data.model.Event
 import com.example.hahaton.ui.news.NewsFragment
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import kotlin.text.set
 
 class HomeFragment : Fragment() {
     val fs: FirebaseFirestore = Firebase.firestore
@@ -49,20 +45,6 @@ class HomeFragment : Fragment() {
                 commit()
             }
         }
-
-
-        val buttonAdd: Button = binding.buttonNotifications
-        buttonAdd.setOnClickListener {
-            fs.collection("events")
-                .document().set(
-                    Event(
-                        System.currentTimeMillis(),
-                        "Название",
-                        "Описание",
-                        System.currentTimeMillis()
-                    )
-                )
-             }
 
         val buttonNews: Button = binding.buttonNews
         buttonNews.setOnClickListener {

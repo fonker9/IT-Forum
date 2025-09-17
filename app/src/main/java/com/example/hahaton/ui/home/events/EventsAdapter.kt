@@ -1,4 +1,4 @@
-package com.example.hahaton.ui.events
+package com.example.hahaton.ui.home.events
 
 import android.view.LayoutInflater
 import android.view.View

@@ -23,6 +23,8 @@ import com.example.hahaton.ui.EventAdapter
 import com.example.hahaton.ui.login.LoginScreen
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import com.example.hahaton.data.repository.EventRepository
+import com.example.hahaton.data.repository.SpeakerRepository
 import com.example.hahaton.ui.login.LoginScreen
 
 class MainActivity : AppCompatActivity() {
@@ -32,6 +34,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        SpeakerRepository.createTestEntries()
+        EventRepository.createTestEntries()
+
 
         val navView: BottomNavigationView = binding.navView
 
