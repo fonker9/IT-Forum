@@ -51,6 +51,9 @@ dependencies {
     implementation(libs.firebase.firestore)
     implementation(libs.firebase.auth)
 
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
+    implementation("com.google.android.gms:play-services-base:18.2.0")
+
     implementation(platform("androidx.compose:compose-bom:2025.01.00")) // версия BOM
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.foundation:foundation")

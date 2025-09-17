@@ -9,6 +9,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.hahaton.data.repository.EventRepository
 import com.example.hahaton.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.FirebaseApp
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -19,9 +20,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        FirebaseApp.initializeApp(this)
+
 
         lifecycleScope.launch {
-            EventRepository.getEvents()
+            EventRepository.createTestEntries()
         }
 
 
