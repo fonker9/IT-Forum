@@ -10,12 +10,12 @@
     <!-- Заголовок -->
     <TextView
         android:id="@+id/Title"
-        android:layout_width="wrap_content"
+        android:layout_width="383dp"
         android:layout_height="wrap_content"
-        android:text="Мероприятия"
+        android:paddingBottom="8dp"
+        android:text="Введите название мероприятия"
         android:textSize="22sp"
-        android:textStyle="bold"
-        android:paddingBottom="8dp" />
+        android:textStyle="bold" />
 
     <!-- Здесь может быть календарь / ViewPager / кастомный календарь -->
 

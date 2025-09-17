@@ -6,8 +6,8 @@ import java.util.Date
 
 @IgnoreExtraProperties
 data class Event(
-    val id: String,
-    val title: String,
+    val id: String ="",
+    val title: String ="",
 ) {
     @Exclude
     var subevents: List<SubEvent> = listOf()

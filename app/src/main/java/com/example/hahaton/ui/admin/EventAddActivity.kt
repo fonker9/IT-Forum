@@ -53,5 +53,6 @@ class EventAddActivity : AppCompatActivity() {
                 commit()
             }
         }
+
     }
 }
