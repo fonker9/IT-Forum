@@ -5,13 +5,14 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.appcompat.app.AppCompatActivity
 import com.example.hahaton.MainActivity
 import com.example.hahaton.R
 import com.example.hahaton.databinding.ActivityEventAddBinding
-import com.example.hahaton.ui.events.EventsFragment
+import com.example.hahaton.ui.home.events.EventsFragment
 import com.example.hahaton.ui.login.LoginScreen
 
-class EventAddActivity : ComponentActivity(){
+class EventAddActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEventAddBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,11 +20,38 @@ class EventAddActivity : ComponentActivity(){
 
         binding = ActivityEventAddBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         val program: Button = binding.Program
         program.setOnClickListener {
-            val fragment = EventsFragment()
+            val fragment = ProgramFragment()
 
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.FragmentContainer, fragment)
+                addToBackStack(null)
+                commit()
+            }
         }
 
+        val speakers: Button = binding.Speakers
+        speakers.setOnClickListener {
+            val fragment = ProgramFragment()
+
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.FragmentContainer, fragment)
+                addToBackStack(null)
+                commit()
+            }
+        }
+
+        val partners: Button = binding.Partners
+        partners.setOnClickListener {
+            val fragment = ProgramFragment()
+
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.FragmentContainer, fragment)
+                addToBackStack(null)
+                commit()
+            }
+        }
     }
 }
