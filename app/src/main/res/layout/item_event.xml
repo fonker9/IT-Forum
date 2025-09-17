@@ -1,17 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="200dp"
-    android:layout_height="120dp"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="300dp"
+    android:layout_height="250dp"
     android:layout_marginEnd="8dp"
-    android:radius="12dp"
-    android:elevation="6dp">
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardBackgroundColor="#E7D7FD"
+    app:cardElevation="0dp">
 
-    <TextView
-        android:id="@+id/eventTitle"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Event Title"
-        android:textSize="18sp"
-        android:textStyle="bold"/>
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <!-- Заголовок события -->
+        <TextView
+            android:id="@+id/eventTitle"
+            android:layout_width="match_parent"
+            android:layout_height="152dp"
+            android:layout_marginBottom="12dp"
+            android:gravity="center"
+            android:text="Название события"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Кнопка посетить мероприятие -->
+        <Button
+            android:id="@+id/visitButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            android:backgroundTint="#F22242"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:text="Посетить мероприятие"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
 </androidx.cardview.widget.CardView>

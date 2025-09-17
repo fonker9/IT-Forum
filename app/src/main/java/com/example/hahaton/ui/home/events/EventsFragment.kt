@@ -1,22 +1,29 @@
-package com.example.hahaton.ui.home.events
+package com.example.hahaton.ui.events
 
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.hahaton.data.repository.EventStorage
 import com.example.hahaton.databinding.FragmentHomeEventsBinding
 import com.example.hahaton.R
 import com.example.hahaton.data.model.Event
 import com.example.hahaton.ui.EventAdapter
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.ListenerRegistration
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class EventsFragment : Fragment() {
+    val fs: FirebaseFirestore = Firebase.firestore
     private var _binding: FragmentHomeEventsBinding? = null
     private val binding get() = _binding!!
 
@@ -69,6 +76,22 @@ class EventsFragment : Fragment() {
 
         recyclerViewPast.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         recyclerViewPast.adapter = EventAdapter(eventsPast)
+
+
+        // Кнопка редактирования мероприятий
+        val buttonAdmin: Button = binding.buttonAdmin
+        val auth = FirebaseAuth.getInstance()
+        val currentUser = auth.currentUser // Проверяем текущего пользователя
+        if (currentUser != null && currentUser.uid == "a0W1CVqGozOCp7UbFlqDS7ytLqj1") {
+            buttonAdmin.visibility = View.VISIBLE // Пользователь с нужным UID, показываем кнопку
+        } else {
+            buttonAdmin.visibility = View.GONE // Другой пользователь или пользователь не авторизован, скрываем кнопку
+        }
+
+        buttonAdmin.setOnClickListener {
+
+        }
+
     }
 
     override fun onDestroyView() {
@@ -76,4 +99,5 @@ class EventsFragment : Fragment() {
         _binding = null
         _firebaseListener = null
     }
+
 }
