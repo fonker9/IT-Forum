@@ -1,17 +1,21 @@
 package com.example.hahaton.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.hahaton.databinding.FragmentHomeBinding
 import com.example.hahaton.ui.home.events.EventsFragment
 import com.example.hahaton.R
 import com.example.hahaton.data.model.Event
+import com.example.hahaton.ui.admin.EventAddActivity
 import com.example.hahaton.ui.news.NewsFragment
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -58,6 +62,26 @@ class HomeFragment : Fragment() {
         }
 
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Кнопка редактирования мероприятий
+        val containerAdmin: ConstraintLayout = view.findViewById(R.id.admin)
+        val auth = FirebaseAuth.getInstance()
+        val currentUser = auth.currentUser // Проверяем текущего пользователя
+        if (currentUser != null && (currentUser.uid == "a0W1CVqGozOCp7UbFlqDS7ytLqj1" || currentUser.uid == "4VShLEA5gvb22itEmke3ngv7Sxb2" ) ) {
+            containerAdmin.visibility = View.VISIBLE // Пользователь с нужным UID, показываем кнопку
+        } else {
+            containerAdmin.visibility = View.GONE // Другой пользователь или пользователь не авторизован, скрываем кнопку
+        }
+
+        val buttonAdmin: Button = binding.buttonAdmin
+        buttonAdmin.setOnClickListener {
+            val intent = Intent(requireContext(), EventAddActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onDestroyView() {

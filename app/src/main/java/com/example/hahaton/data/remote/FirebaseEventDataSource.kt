@@ -1,6 +1,7 @@
 package com.example.hahaton.data.remote
 
 import android.util.Log
+import androidx.compose.runtime.snapshots.Snapshot
 import com.example.hahaton.data.OfflineManager
 import com.example.hahaton.data.model.Event
 import com.example.hahaton.data.model.Speaker
@@ -75,7 +76,21 @@ class FirebaseEventDataSource {
     }
 
     suspend fun getEvent(id: String): Event? {
-        return OfflineManager.getData("events", id)?.toObject(Event::class.java)
+        val snapshot = eventsCollection.document(id).get().await()
+
+        val event = snapshot.toObject(Event::class.java)
+        if (event != null) {
+            val snapshotSubevents = snapshot.reference.collection("subevents").get().await()
+
+            snapshotSubevents.documents.forEach { docSubevent ->
+                val subevent = docSubevent.toObject(SubEvent::class.java)
+                if (subevent != null) {
+                    event.subevents.add(subevent)
+                }
+            }
+        }
+
+        return event
     }
 
     fun createTestEntries() {
@@ -93,7 +108,7 @@ class FirebaseEventDataSource {
                         "UNIQUE_2",
                         "Собрание",
                         Speaker("UNIQUE_1", "Александр", "Голунов", "Владимирович"),
-                        SimpleDateFormat("dd.MM.yyyy hh:mm").parse("17.09.2025 18:30")
+                        SimpleDateFormat("dd.MM.yyyy hh:mm").parse("17.09.2025 22:30")
                     ),
                 )
             }

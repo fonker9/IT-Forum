@@ -1,5 +1,7 @@
 package com.example.hahaton.data.model
 
+import android.os.Parcelable
+import androidx.versionedparcelable.VersionedParcelize
 import com.google.firebase.firestore.Exclude
 import com.google.firebase.firestore.IgnoreExtraProperties
 import java.util.Date
@@ -15,6 +17,8 @@ data class Event(
 
     @Exclude
     fun getStartDate(): Date {
+//        if (subevents.isEmpty()) return Date()
+
         val subevent = subevents.first()
 
         return subevent.date
@@ -22,6 +26,8 @@ data class Event(
 
     @Exclude
     fun getEndDate(): Date {
+//        if (subevents.isEmpty()) return Date()
+
         val subevent = subevents.last()
 
         return subevent.date
