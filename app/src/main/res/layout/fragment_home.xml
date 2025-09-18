@@ -18,59 +18,83 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/home_title"
-            android:textSize="24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_notifications"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/Widget.Material3.Button.Icon"
-            app:icon="@drawable/ic_notifications_black_24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <ImageView
+            android:id="@+id/my_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/notif"
+            android:contentDescription=""
+            app:layout_constraintStart_toEndOf="@id/text_home"
+            app:layout_constraintTop_toTopOf="@id/text_home"
+            app:layout_constraintBottom_toBottomOf="@id/text_home"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginStart="8dp"/> <!-- отступ между TextView и иконкой -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginBottom="16dp">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_events"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/button_events"
-            android:layout_weight="1"/>
+            android:background="@drawable/rounded_button"
+            android:backgroundTint="#5B00A3"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button_news"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            android:layout_marginEnd="8dp"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_news"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/button_news"
-            android:layout_weight="1"
-            android:layout_marginStart="16dp"/>
+            android:textColor="#FFFFFF"
+            android:background="@drawable/rounded_button"
+            android:backgroundTint="#5557FE"
+            app:layout_constraintStart_toEndOf="@+id/button_events"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="8dp"/>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/admin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonAdmin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:icon="@drawable/ic_dashboard_black_24dp"
+            android:backgroundTint="@android:color/transparent"
+            android:foregroundTint="@android:color/transparent"
+            app:icon="@drawable/add_admin"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconTint="#000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:elevation="0dp"
+            android:stateListAnimator="@null"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout
@@ -78,6 +102,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
 </LinearLayout>

@@ -68,11 +68,13 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Кнопка редактирования мероприятий
+
         val containerAdmin: ConstraintLayout = view.findViewById(R.id.admin)
         val auth = FirebaseAuth.getInstance()
         val currentUser = auth.currentUser // Проверяем текущего пользователя
         if (currentUser != null && (currentUser.uid == "a0W1CVqGozOCp7UbFlqDS7ytLqj1" || currentUser.uid == "4VShLEA5gvb22itEmke3ngv7Sxb2" ) ) {
             containerAdmin.visibility = View.VISIBLE // Пользователь с нужным UID, показываем кнопку
+
         } else {
             containerAdmin.visibility = View.GONE // Другой пользователь или пользователь не авторизован, скрываем кнопку
         }

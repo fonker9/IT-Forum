@@ -25,17 +25,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerEvents" />
 
-    <!-- 🔹 Новая кнопка -->
-    <Button
-        android:id="@+id/buttonAdmin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Добавить событие"
-        android:backgroundTint="#FF3B30"
-        android:textColor="@android:color/white"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerEventsPast"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

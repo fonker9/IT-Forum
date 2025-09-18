@@ -21,7 +21,7 @@
         <TextView
             android:id="@+id/eventTitle"
             android:layout_width="match_parent"
-            android:layout_height="122dp"
+            android:layout_height="100dp"
             android:layout_marginBottom="12dp"
             android:gravity="center"
             android:text="Название события"
@@ -29,10 +29,12 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
+        <!-- Кнопка посетить мероприятие -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp">
+            android:paddingHorizontal="15dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="30dp">
 
             <TextView
                 android:id="@+id/eventDate"
@@ -56,19 +58,21 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!-- Кнопка посетить мероприятие -->
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/visitButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="0dp"
             android:layout_marginBottom="0dp"
-            android:backgroundTint="#F22242"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:text="Посетить мероприятие"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#F22242"
+            android:background="@drawable/rounded_button"
+            style="@style/Widget.AppCompat.Button"/>
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
