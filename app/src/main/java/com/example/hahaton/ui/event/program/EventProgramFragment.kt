@@ -33,6 +33,7 @@ class EventProgramFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         val adapter = SubEventAdapter(event.subevents)
 
         binding.eventProgramRecycler.layoutManager = LinearLayoutManager(requireContext())
