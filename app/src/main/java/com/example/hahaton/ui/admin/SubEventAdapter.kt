@@ -19,8 +19,7 @@ class SubEventAdapter(
 
         fun bind(item: SubEvent) {
             binding.eventTitle.text = item.title
-            binding.eventDate.text = "${item.place} • ${dateFormat.format(item.date)}"
-            binding.eventDateMin.text = item.type
+            //Добавить еще
         }
     }
 

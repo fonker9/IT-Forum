@@ -11,6 +11,7 @@ import java.util.UUID
 data class Event(
     val id: String = UUID.randomUUID().toString(),
     val title: String = "Undefined",
+    val place: String = "Undefined",
 ) {
     @Exclude
     var subevents: MutableList<SubEvent> = ArrayList()
@@ -21,7 +22,7 @@ data class Event(
 
         val subevent = subevents.first()
 
-        return subevent.date
+        return subevent.dateStart
     }
 
     @Exclude
@@ -30,6 +31,6 @@ data class Event(
 
         val subevent = subevents.last()
 
-        return subevent.date
+        return subevent.dateEnd
     }
 }

@@ -7,7 +7,8 @@ data class SubEvent(
     val id: String = UUID.randomUUID().toString(),
     val title: String = "Undefined",
     val speaker: Speaker? = null,
-    val date: Date = Date(),
+    val dateStart: Date = Date(),
+    val dateEnd: Date = Date(),
     val place: String = "Undefined",
-    val type: String = "Undefined",
+    val type: SubEventType = SubEventType.exhibition,
 )
