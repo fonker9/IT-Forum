@@ -32,6 +32,8 @@ class MainActivity : AppCompatActivity() {
         FirebaseApp.initializeApp(this)
         Log.d("MyLog", "Firebase initialized")
 
+        OfflineManager.enablePersistence()
+
         val auth = Firebase.auth
         val currentUser = auth.currentUser
 

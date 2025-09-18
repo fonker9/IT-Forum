@@ -1,6 +1,5 @@
 package com.example.hahaton.data
 
-import android.util.Log
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
@@ -8,6 +7,9 @@ import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.google.firebase.firestore.PersistentCacheSettings
 import com.google.firebase.firestore.Source
 import com.google.firebase.firestore.firestore
+import com.google.firebase.firestore.firestoreSettings
+import com.google.firebase.firestore.memoryCacheSettings
+import com.google.firebase.firestore.persistentCacheSettings
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
@@ -20,16 +22,13 @@ object OfflineManager {
     }
 
     fun enablePersistence() {
-//        val settings = FirebaseFirestoreSettings.Builder()
-//            .setLocalCacheSettings( PersistentCacheSettings.newBuilder().build() )
-//            .build()
-//
-//        db.firestoreSettings = settings
-        Log.d("MyLog", "кеш сохранен")
-        db.firestoreSettings = FirebaseFirestoreSettings.Builder()
-            .setPersistenceEnabled(true) // включаем кэш
-            .build()
+        val settings = firestoreSettings {
+            setLocalCacheSettings(persistentCacheSettings {  })
+        }
+
+        db.firestoreSettings = settings
     }
+
     suspend fun getData(collection: String, documentId: String): DocumentSnapshot? {
         return withContext(Dispatchers.IO) {
             try {
