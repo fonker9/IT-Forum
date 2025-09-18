@@ -7,13 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hahaton.data.model.Event
-import com.example.hahaton.databinding.FragmentEventProgramBinding
-import com.example.hahaton.ui.admin.SubEventAdapter
+import com.example.hahaton.databinding.FragmentEventSpeakersBinding
 
 class EventSpeakersFragment(
     private val event: Event
-): Fragment() {
-    private var _binding: FragmentEventProgramBinding? = null
+) : Fragment() {
+    private var _binding: FragmentEventSpeakersBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,17 +24,19 @@ class EventSpeakersFragment(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentEventProgramBinding.inflate(inflater, container, false)
+        _binding = FragmentEventSpeakersBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = SubEventAdapter(event.subevents)
+        val adapter = EventSpeakerAdapter()
 
-        binding.eventProgramRecycler.layoutManager = LinearLayoutManager(requireContext())
-        binding.eventProgramRecycler.adapter = adapter
+        adapter.submitList(event.getSpeakers())
+
+        binding.eventSpeakersRecycler.layoutManager = LinearLayoutManager(requireContext())
+        binding.eventSpeakersRecycler.adapter = adapter
     }
 
     override fun onDestroyView() {

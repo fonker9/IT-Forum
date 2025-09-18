@@ -102,7 +102,7 @@ class FirebaseEventDataSource {
                     SubEvent(
                         "UNIQUE_1",
                         "Название Минимероприятия",
-                        Speaker("UNIQUE_1", "Александр", "Голунов", "Владимирович"),
+                        Speaker("UNIQUE_1", "Александр", "Голунов", "Владимирович", description = "Крутой товарищ доцент"),
                         SimpleDateFormat("dd.MM.yyyy hh:mm").parse("17.09.2025 18:30"),
                         SimpleDateFormat("dd.MM.yyyy hh:mm").parse("17.09.2025 19:30"),
                         "Выставочное пространство, 2 этаж",
@@ -111,7 +111,7 @@ class FirebaseEventDataSource {
                     SubEvent(
                         "UNIQUE_2",
                         "Название Минимероприятия2",
-                        Speaker("UNIQUE_2", "Александр", "Мушкет", "Викторович"),
+                        Speaker("UNIQUE_2", "Александр", "Мушкет", "Викторович", description = "Крутой товарищ студент"),
                         SimpleDateFormat("dd.MM.yyyy hh:mm").parse("17.09.2025 19:40"),
                         SimpleDateFormat("dd.MM.yyyy hh:mm").parse("17.09.2025 20:00"),
                         "Выставочное пространство, 3 этаж",

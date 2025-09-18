@@ -33,4 +33,17 @@ data class Event(
 
         return subevent.dateEnd
     }
+
+    @Exclude
+    fun getSpeakers(): List<Speaker> {
+        val result: HashSet<Speaker> = hashSetOf()
+
+        for (subevent in subevents) {
+            if (subevent.speaker == null) continue
+
+            result.add(subevent.speaker)
+        }
+
+        return result.toList()
+    }
 }

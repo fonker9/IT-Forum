@@ -8,6 +8,7 @@ import com.example.hahaton.R
 import com.example.hahaton.data.repository.EventRepository
 import com.example.hahaton.databinding.ActivityEventBinding
 import com.example.hahaton.ui.event.program.EventProgramFragment
+import com.example.hahaton.ui.event.speakers.EventSpeakersFragment
 import kotlinx.coroutines.launch
 
 class EventActivity : AppCompatActivity() {
@@ -34,6 +35,7 @@ class EventActivity : AppCompatActivity() {
                     binding.eventNavigationView.setOnItemSelectedListener { item ->
                         when (item.itemId) {
                             R.id.nav_event_program -> replaceFragment(EventProgramFragment(event))
+                            R.id.nav_event_speakers -> replaceFragment(EventSpeakersFragment(event))
                             else -> false
                         }
 

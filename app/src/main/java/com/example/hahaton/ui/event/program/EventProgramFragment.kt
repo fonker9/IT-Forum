@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hahaton.data.model.Event
 import com.example.hahaton.databinding.FragmentEventProgramBinding
 import com.example.hahaton.ui.admin.SubEventAdapter
+import com.example.hahaton.ui.event.speakers.EventSpeakerAdapter
 
 class EventProgramFragment(
     private var event: Event
