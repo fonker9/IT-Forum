@@ -1,5 +1,6 @@
 package com.example.hahaton.ui.home.events
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import com.example.hahaton.data.model.Event
 import com.example.hahaton.data.repository.EventRepository
 import com.example.hahaton.databinding.FragmentHomeEventsBinding
 import com.example.hahaton.ui.EventAdapter
+import com.example.hahaton.ui.admin.EventAddActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
@@ -68,17 +70,17 @@ class EventsFragment : Fragment() {
         val buttonAdmin: Button = binding.buttonAdmin
         val auth = FirebaseAuth.getInstance()
         val currentUser = auth.currentUser // Проверяем текущего пользователя
-//        if (currentUser != null && currentUser.uid == "a0W1CVqGozOCp7UbFlqDS7ytLqj1") {
-//            buttonAdmin.visibility = View.VISIBLE // Пользователь с нужным UID, показываем кнопку
-//        } else {
-//            buttonAdmin.visibility = View.GONE // Другой пользователь или пользователь не авторизован, скрываем кнопку
-//        }
+        if (currentUser != null && currentUser.uid == "a0W1CVqGozOCp7UbFlqDS7ytLqj1") {
+            buttonAdmin.visibility = View.VISIBLE // Пользователь с нужным UID, показываем кнопку
+        } else {
+            buttonAdmin.visibility = View.GONE // Другой пользователь или пользователь не авторизован, скрываем кнопку
+        }
 
         buttonAdmin.setOnClickListener {
-           Firebase.firestore.collection("events").document().set(Event("UNIQUE_1", "Мероприятие #1"))
+//           Firebase.firestore.collection("events").document().set(Event("UNIQUE_1", "Мероприятие #1"))
 
-//            val intent = Intent(requireContext(), EventAddActivity::class.java)
-//            startActivity(intent)
+            val intent = Intent(requireContext(), EventAddActivity::class.java)
+            startActivity(intent)
         }
 
     }
