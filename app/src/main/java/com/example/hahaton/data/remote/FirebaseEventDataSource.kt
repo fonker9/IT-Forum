@@ -61,18 +61,17 @@ class FirebaseEventDataSource {
     fun getEventsRealTime(): Flow<List<Event>> = callbackFlow {
         val subscription = eventsCollection.addSnapshotListener { snapshot, e ->
             if (e != null) {
-                close(e)
+                trySend(emptyList())
                 return@addSnapshotListener
             }
 
             async {
                 if (snapshot != null) {
                     val events = buildEventsList(snapshot)
-                    trySend(events)
+                    trySend(events).isSuccess
                 }
             }
         }
-
         awaitClose { subscription.remove() }
     }
 

@@ -13,6 +13,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.hahaton.MainActivity
 import com.example.hahaton.databinding.FragmentProfileBinding
 import com.example.hahaton.ui.login.LoginActivity // Создайте этот Activity
+import com.example.hahaton.ui.login.LoginScreen
+import com.example.hahaton.ui.login.RegisterActivity
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth

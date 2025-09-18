@@ -2,6 +2,7 @@ package com.example.hahaton.ui.login
 
 import android.util.Log
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -54,23 +55,35 @@ fun LoginScreen(
                 fontWeight = FontWeight.Bold,
                 fontSize = 28.sp
             ),
-            modifier = Modifier.padding(bottom = 8.dp)
+            modifier = Modifier.padding(bottom = 5.dp)
         )
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(2.dp))
 
-        // Кнопка "Регистрация" синим цветом с подчеркиванием
-        TextButton(
-            onClick = onNavigateToRegister,
-            modifier = Modifier.padding(0.dp)
-        ) {
-            Text(
-                text = "Регистрация",
-                color = MaterialTheme.colorScheme.primary,
-                fontSize = 16.sp,
-                textDecoration = TextDecoration.Underline
-            )
-        }
+//        // Кнопка "Регистрация" синим цветом с подчеркиванием
+//        TextButton(
+//            onClick = onNavigateToRegister,
+//            modifier = Modifier.padding(0.dp),
+//
+//
+//        ) {
+//            Text(
+//                text = "Регистрация",
+//                color = MaterialTheme.colorScheme.primary,
+//                fontSize = 16.sp,
+//                textDecoration = TextDecoration.Underline,
+//
+//            )
+//        }
+        Text(
+            text = "Регистрация",
+            fontWeight = FontWeight.Bold,
+            color = Color(0xFF6C63FF),
+            fontSize = 16.sp,
+            textDecoration = TextDecoration.Underline,
+//            modifier = Modifier.clickable { onNavigateToRegister() }
+            modifier = Modifier.clickable(onClick = onNavigateToRegister)
+        )
 
         Spacer(modifier = Modifier.height(8.dp))
 
@@ -83,6 +96,7 @@ fun LoginScreen(
             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
             modifier = Modifier.padding(bottom = 32.dp)
         )
+        Spacer(modifier = Modifier.height(40.dp))
 
         // Поле для email
         OutlinedTextField(
@@ -91,7 +105,19 @@ fun LoginScreen(
             label = { Text("Email") },
             modifier = Modifier.fillMaxWidth(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-            singleLine = true
+            singleLine = true,
+            shape = RoundedCornerShape(12.dp),
+            colors = TextFieldDefaults.colors(
+                unfocusedContainerColor = Color(0xFFE9E9ED), // #E9E9ED
+                focusedContainerColor = Color(0xFFE9E9ED),   // #E9E9ED
+                unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+                focusedTextColor = MaterialTheme.colorScheme.onSurface,
+                unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                focusedLabelColor = MaterialTheme.colorScheme.primary,
+                unfocusedIndicatorColor = Color.Transparent, // Убираем индикатор
+                focusedIndicatorColor = Color.Transparent,   // Убираем индикатор
+                cursorColor = MaterialTheme.colorScheme.primary
+            )
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -104,7 +130,19 @@ fun LoginScreen(
             modifier = Modifier.fillMaxWidth(),
             visualTransformation = PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            singleLine = true
+            singleLine = true,
+            shape = RoundedCornerShape(12.dp),
+            colors = TextFieldDefaults.colors(
+                unfocusedContainerColor = Color(0xFFE9E9ED), // #E9E9ED
+                focusedContainerColor = Color(0xFFE9E9ED),   // #E9E9ED
+                unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+                focusedTextColor = MaterialTheme.colorScheme.onSurface,
+                unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                focusedLabelColor = MaterialTheme.colorScheme.primary,
+                unfocusedIndicatorColor = Color.Transparent, // Убираем индикатор
+                focusedIndicatorColor = Color.Transparent,   // Убираем индикатор
+                cursorColor = MaterialTheme.colorScheme.primary
+            )
         )
 
         Spacer(modifier = Modifier.height(32.dp))
@@ -137,8 +175,10 @@ fun LoginScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .background(
-                        brush = gradientBrush,
-                        shape = RoundedCornerShape(12.dp) // Закругление для градиента
+                        brush = Brush.horizontalGradient(
+                            listOf(Color(0xFF6C63FF), Color(0xFF9C27B0))
+                        ),
+                        shape = RoundedCornerShape(12.dp)
                     ),
                 contentAlignment = Alignment.Center
             ) {
