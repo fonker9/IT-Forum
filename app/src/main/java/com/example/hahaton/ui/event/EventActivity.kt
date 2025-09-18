@@ -1,5 +1,6 @@
 package com.example.hahaton.ui.event
 
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
@@ -62,8 +63,8 @@ class EventActivity : AppCompatActivity() {
     }
 
     private fun hightlightButton(button: Button) {
-        selectedButton?.setBackgroundColor(ContextCompat.getColor(this, R.color.nav_button_idle))
-        button.setBackgroundColor(ContextCompat.getColor(this, R.color.nav_button_selected))
+        selectedButton?.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.nav_button_idle))
+        button.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.nav_button_selected))
         selectedButton = button
     }
     private fun replaceFragment(fragment: Fragment) {
