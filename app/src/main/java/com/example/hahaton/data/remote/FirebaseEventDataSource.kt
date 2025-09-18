@@ -8,6 +8,7 @@ import com.example.hahaton.data.model.Speaker
 import com.example.hahaton.data.model.SubEvent
 import com.example.hahaton.data.model.SubEventType
 import com.google.firebase.Firebase
+import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.firestore

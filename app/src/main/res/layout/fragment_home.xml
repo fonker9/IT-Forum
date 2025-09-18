@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:paddingHorizontal="16dp"
     tools:context=".ui.home.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,13 +15,15 @@
 
         <TextView
             android:id="@+id/text_home"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:maxLines="2"
             android:text="@string/home_title"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/my_icon"/>
 
         <ImageView
             android:id="@+id/my_icon"
@@ -29,7 +31,6 @@
             android:layout_height="48dp"
             android:src="@drawable/notif"
             android:contentDescription=""
-            app:layout_constraintStart_toEndOf="@id/text_home"
             app:layout_constraintTop_toTopOf="@id/text_home"
             app:layout_constraintBottom_toBottomOf="@id/text_home"
             app:layout_constraintEnd_toEndOf="parent"

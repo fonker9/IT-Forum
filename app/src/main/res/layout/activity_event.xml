@@ -23,6 +23,7 @@
             android:id="@+id/event_navigation_program"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:backgroundTint="@color/nav_button_idle"
             android:text="Программа"
             android:textSize="12dp"/>
         <Space
@@ -33,6 +34,7 @@
             android:id="@+id/event_navigation_speakers"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:backgroundTint="@color/nav_button_idle"
             android:text="Спикеры"
             android:textSize="12dp"/>
         <Space
@@ -43,6 +45,7 @@
             android:id="@+id/event_navigation_partners"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:backgroundTint="@color/nav_button_idle"
             android:text="Партнёры"
             android:textSize="12dp"/>
     </LinearLayout>

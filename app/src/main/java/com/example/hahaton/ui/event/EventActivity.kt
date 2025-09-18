@@ -1,30 +1,22 @@
 package com.example.hahaton.ui.event
 
-import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.view.menu.MenuBuilder
-import androidx.compose.ui.graphics.Color
 import androidx.core.content.ContextCompat
-import androidx.core.view.get
-import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hahaton.R
 import com.example.hahaton.data.repository.EventRepository
 import com.example.hahaton.databinding.ActivityEventBinding
 import com.example.hahaton.ui.event.program.EventProgramFragment
 import com.example.hahaton.ui.event.speakers.EventSpeakersFragment
-import com.google.android.material.internal.NavigationMenuView
 import kotlinx.coroutines.launch
 
 class EventActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEventBinding
+    private var selectedButton: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,9 +35,16 @@ class EventActivity : AppCompatActivity() {
                     binding.eventLocationText.text = event.place
 
                     replaceFragment(EventProgramFragment(event))
+                    hightlightButton(binding.eventNavigationProgram)
 
-                    binding.eventNavigationProgram.setOnClickListener { replaceFragment(EventProgramFragment(event)) }
-                    binding.eventNavigationSpeakers.setOnClickListener { replaceFragment(EventSpeakersFragment(event)) }
+                    binding.eventNavigationProgram.setOnClickListener {
+                        replaceFragment(EventProgramFragment(event))
+                        hightlightButton(binding.eventNavigationProgram)
+                    }
+                    binding.eventNavigationSpeakers.setOnClickListener {
+                        replaceFragment(EventSpeakersFragment(event))
+                        hightlightButton(binding.eventNavigationSpeakers)
+                    }
 
 //                    TODO: make dreams come true (create NavigationView with buttons)
 //                    binding.eventNavigationView.setOnItemSelectedListener { item ->
@@ -62,7 +61,11 @@ class EventActivity : AppCompatActivity() {
         }
     }
 
-
+    private fun hightlightButton(button: Button) {
+        selectedButton?.setBackgroundColor(ContextCompat.getColor(this, R.color.nav_button_idle))
+        button.setBackgroundColor(ContextCompat.getColor(this, R.color.nav_button_selected))
+        selectedButton = button
+    }
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.nav_host_fragment_activity_event, fragment)
