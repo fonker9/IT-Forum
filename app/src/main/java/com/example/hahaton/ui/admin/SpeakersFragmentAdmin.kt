@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.hahaton.databinding.FragmentSpeakersBinding
 
-class SpeakersFragment : Fragment() {
+class SpeakersFragmentAdmin : Fragment() {
     private var _binding: FragmentSpeakersBinding? = null
     private val binding get() = _binding!!
 

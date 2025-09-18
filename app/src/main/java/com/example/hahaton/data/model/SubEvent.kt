@@ -8,4 +8,6 @@ data class SubEvent(
     val title: String = "Undefined",
     val speaker: Speaker? = null,
     val date: Date = Date(),
+    val place: String = "Undefined",
+    val type: String = "Undefined",
 )

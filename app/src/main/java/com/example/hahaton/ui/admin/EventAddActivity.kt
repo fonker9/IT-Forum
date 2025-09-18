@@ -11,6 +11,8 @@ import com.example.hahaton.R
 import com.example.hahaton.databinding.ActivityEventAddBinding
 import com.example.hahaton.ui.home.events.EventsFragment
 import com.example.hahaton.ui.login.LoginScreen
+import com.example.hahaton.ui.program.ProgramFragment
+import com.example.hahaton.ui.program.ProgramFragmentAdmin
 
 class EventAddActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEventAddBinding
@@ -23,7 +25,7 @@ class EventAddActivity : AppCompatActivity() {
 
         val program: Button = binding.Program
         program.setOnClickListener {
-            val fragment = ProgramFragment()
+            val fragment = ProgramFragmentAdmin()
 
             supportFragmentManager.beginTransaction().apply {
                 replace(R.id.FragmentContainer, fragment)
@@ -34,7 +36,7 @@ class EventAddActivity : AppCompatActivity() {
 
         val speakers: Button = binding.Speakers
         speakers.setOnClickListener {
-            val fragment = ProgramFragment()
+            val fragment = ProgramFragmentAdmin()
 
             supportFragmentManager.beginTransaction().apply {
                 replace(R.id.FragmentContainer, fragment)
@@ -43,16 +45,16 @@ class EventAddActivity : AppCompatActivity() {
             }
         }
 
-        val partners: Button = binding.Partners
-        partners.setOnClickListener {
-            val fragment = ProgramFragment()
-
-            supportFragmentManager.beginTransaction().apply {
-                replace(R.id.FragmentContainer, fragment)
-                addToBackStack(null)
-                commit()
-            }
-        }
+//        val partners: Button = binding.Partners
+//        partners.setOnClickListener {
+//            val fragment = ProgramFragment()
+//
+//            supportFragmentManager.beginTransaction().apply {
+//                replace(R.id.FragmentContainer, fragment)
+//                addToBackStack(null)
+//                commit()
+//            }
+//        }
 
     }
 }

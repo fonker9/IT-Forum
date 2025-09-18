@@ -72,11 +72,6 @@ fun LoginScreen(
             Text(text = "Sign Up")
         }
 
-//        Button(onClick = {
-//            deleteAccount(auth,emailState.value,passwordState.value)
-//        }){
-//            Text(text = "Delete Account")
-//        }
 
     }
 }
@@ -105,20 +100,3 @@ private fun signIn(auth: FirebaseAuth, email: String, password: String, onSucces
             }
         }
 }
-
-//private fun deleteAccount(auth: FirebaseAuth, email: String, password: String) {
-//    val credential = EmailAuthProvider.getCredential(email, password)
-//    auth.currentUser?.reauthenticate(credential)?.addOnCompleteListener {
-//        if(it.isSuccessful){
-//            auth.currentUser?.delete()?.addOnCompleteListener {
-//                if (it.isSuccessful) {
-//                    Log.d("MyLog", "Account was deleted!")
-//                } else {
-//                    Log.d("MyLog", "Failure delete account!")
-//                }
-//            }
-//        }else{
-//            Log.d("MyLog", "Failure reauthenticate!")
-//        }
-//    }
-//}
