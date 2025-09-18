@@ -6,6 +6,7 @@ import com.example.hahaton.data.OfflineManager
 import com.example.hahaton.data.model.Event
 import com.example.hahaton.data.model.Speaker
 import com.example.hahaton.data.model.SubEvent
+import com.example.hahaton.data.model.SubEventType
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.QuerySnapshot
@@ -96,19 +97,25 @@ class FirebaseEventDataSource {
     fun createTestEntries() {
         val events = listOf(
             object {
-                val event = Event("UNIQUE_1", "Мероприятие #1")
+                val event = Event("UNIQUE_2", "Мероприятие #2", "Конгресс-холл, ул. 75 лет Октября 25 к2")
                 val subevents = listOf(
                     SubEvent(
                         "UNIQUE_1",
-                        "Собрание",
+                        "Название Минимероприятия",
                         Speaker("UNIQUE_1", "Александр", "Голунов", "Владимирович"),
-                        SimpleDateFormat("dd.MM.yyyy hh:mm").parse("17.09.2025 18:30")
+                        SimpleDateFormat("dd.MM.yyyy hh:mm").parse("17.09.2025 18:30"),
+                        SimpleDateFormat("dd.MM.yyyy hh:mm").parse("17.09.2025 19:30"),
+                        "Выставочное пространство, 2 этаж",
+                        SubEventType.exhibition,
                     ),
                     SubEvent(
                         "UNIQUE_2",
-                        "Собрание",
-                        Speaker("UNIQUE_1", "Александр", "Голунов", "Владимирович"),
-                        SimpleDateFormat("dd.MM.yyyy hh:mm").parse("17.09.2025 22:30")
+                        "Название Минимероприятия2",
+                        Speaker("UNIQUE_2", "Александр", "Мушкет", "Викторович"),
+                        SimpleDateFormat("dd.MM.yyyy hh:mm").parse("17.09.2025 19:40"),
+                        SimpleDateFormat("dd.MM.yyyy hh:mm").parse("17.09.2025 20:00"),
+                        "Выставочное пространство, 3 этаж",
+                        SubEventType.meeting,
                     ),
                 )
             }

@@ -12,6 +12,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.hahaton.data.repository.EventRepository
 import com.example.hahaton.databinding.ActivityMainBinding
 import com.example.hahaton.ui.login.LoginScreen
+import com.example.hahaton.ui.login.RegisterActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.Firebase
 import com.google.firebase.FirebaseApp
@@ -54,10 +55,16 @@ class MainActivity : AppCompatActivity() {
             setContent {
                 LoginScreen(
                     onLoginSuccess = {
-                        // Перезапускаем MainActivity после успешного входа
                         val intent = Intent(this@MainActivity, MainActivity::class.java)
                         startActivity(intent)
-                        finish() // Закрываем текущую активити
+                        finish()
+                    },
+                    onNavigateToRegister = {
+                        // Переходим на экран регистрации БЕЗ анимации
+                        val intent = Intent(this@MainActivity, RegisterActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NO_ANIMATION
+                        startActivity(intent)
+                        overridePendingTransition(0, 0) // Убираем анимацию
                     }
                 )
             }
