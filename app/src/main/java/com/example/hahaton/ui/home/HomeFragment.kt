@@ -39,27 +39,13 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val buttonEvents: Button = binding.buttonEvents
-        buttonEvents.setOnClickListener {
-            val fragment = EventsFragment()
+        replaceFragment(EventsFragment())
 
-            childFragmentManager.beginTransaction().apply {
-                replace(R.id.fragment_home, fragment)
-                addToBackStack(null)
-                commit()
-            }
-        }
+        val buttonEvents: Button = binding.buttonEvents
+        buttonEvents.setOnClickListener { replaceFragment(EventsFragment()) }
 
         val buttonNews: Button = binding.buttonNews
-        buttonNews.setOnClickListener {
-            val fragment = NewsFragment()
-
-            childFragmentManager.beginTransaction().apply {
-                replace(R.id.fragment_home, fragment)
-                addToBackStack(null)
-                commit()
-            }
-        }
+        buttonNews.setOnClickListener { replaceFragment(NewsFragment()) }
 
         return root
     }
@@ -89,5 +75,11 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        childFragmentManager.beginTransaction()
+            .replace(R.id.fragment_home, fragment)
+            .commit()
     }
 }
