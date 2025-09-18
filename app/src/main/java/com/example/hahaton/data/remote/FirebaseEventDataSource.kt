@@ -11,6 +11,7 @@ import com.google.firebase.Firebase
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.QuerySnapshot
+import com.google.firebase.firestore.Source
 import com.google.firebase.firestore.firestore
 import kotlinx.coroutines.async
 import kotlinx.coroutines.channels.awaitClose
@@ -18,12 +19,14 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
 import java.text.SimpleDateFormat
-
+import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.launch
 class FirebaseEventDataSource {
     private val db = Firebase.firestore
     private val eventsCollection = db.collection("events")
 
-    private suspend fun buildEventsList(snapshot: QuerySnapshot): List<Event> {
+    private suspend fun     buildEventsList(snapshot: QuerySnapshot): List<Event> {
         val result: MutableList<Event> = ArrayList()
 
         snapshot.documents.forEach { doc ->
@@ -59,22 +62,43 @@ class FirebaseEventDataSource {
         return buildEventsList(snapshot)
     }
 
+
+
+
+
     fun getEventsRealTime(): Flow<List<Event>> = callbackFlow {
+        // Сначала пробуем взять данные из кэша
+        eventsCollection.get(Source.CACHE)
+            .addOnSuccessListener { snapshot ->
+                if (snapshot != null && !snapshot.isEmpty) {
+                    launch {
+                        val events = buildEventsList(snapshot) // теперь внутри coroutine
+                        trySend(events).isSuccess
+                    }
+                }
+            }
+            .addOnFailureListener {
+                // если кэша нет, можно игнорировать
+            }
+
+        // Подписка на реальные изменения
         val subscription = eventsCollection.addSnapshotListener { snapshot, e ->
             if (e != null) {
                 trySend(emptyList())
                 return@addSnapshotListener
             }
 
-            async {
-                if (snapshot != null) {
-                    val events = buildEventsList(snapshot)
+            if (snapshot != null) {
+                launch {
+                    val events = buildEventsList(snapshot) // теперь внутри coroutine
                     trySend(events).isSuccess
                 }
             }
         }
+
         awaitClose { subscription.remove() }
     }
+
 
     suspend fun getEvent(id: String): Event? {
         val snapshot = eventsCollection.document(id).get().await()

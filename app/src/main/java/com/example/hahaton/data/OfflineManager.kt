@@ -15,10 +15,10 @@ import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
 object OfflineManager {
-    private val db = Firebase.firestore
+    private val db = Firebase.firestore;
 
     init {
-//        enablePersistence()
+        enablePersistence()
     }
 
     fun enablePersistence() {

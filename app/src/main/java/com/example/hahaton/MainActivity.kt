@@ -40,10 +40,9 @@ class MainActivity : AppCompatActivity() {
         if (currentUser != null) {
             // ПОЛЬЗОВАТЕЛЬ АВТОРИЗОВАН - показываем основной интерфейс
             Log.d("MyLog", "uid = ${currentUser.uid}!")
-
+            OfflineManager.enablePersistence()
             binding = ActivityMainBinding.inflate(layoutInflater)
             setContentView(binding.root)
-
             // Настраиваем навигацию только для авторизованного пользователя
             val navView: BottomNavigationView = binding.navView
             val navController = findNavController(R.id.nav_host_fragment_activity_main)

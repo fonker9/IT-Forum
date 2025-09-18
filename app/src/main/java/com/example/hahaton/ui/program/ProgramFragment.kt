@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.hahaton.databinding.FragmentProgramBinding
-import com.example.hahaton.ui.home.events.EventsAdapter
+
 
 class ProgramFragment : Fragment() {
 
@@ -15,8 +15,6 @@ class ProgramFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-
-    private lateinit var adapter: EventsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
