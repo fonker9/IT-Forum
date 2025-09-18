@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.hahaton.data.OfflineManager
 import com.example.hahaton.data.repository.EventRepository
 import com.example.hahaton.databinding.ActivityMainBinding
 import com.example.hahaton.ui.login.LoginScreen
@@ -30,6 +31,8 @@ class MainActivity : AppCompatActivity() {
 
         FirebaseApp.initializeApp(this)
         Log.d("MyLog", "Firebase initialized")
+
+        OfflineManager.enablePersistence()
 
         val auth = Firebase.auth
         val currentUser = auth.currentUser

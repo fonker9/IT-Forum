@@ -7,21 +7,24 @@ import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.google.firebase.firestore.PersistentCacheSettings
 import com.google.firebase.firestore.Source
 import com.google.firebase.firestore.firestore
+import com.google.firebase.firestore.firestoreSettings
+import com.google.firebase.firestore.memoryCacheSettings
+import com.google.firebase.firestore.persistentCacheSettings
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
 object OfflineManager {
-    private val db = Firebase.firestore;
+    private val db = Firebase.firestore
 
     init {
-        enablePersistence()
+//        enablePersistence()
     }
 
     fun enablePersistence() {
-        val settings = FirebaseFirestoreSettings.Builder()
-            .setLocalCacheSettings( PersistentCacheSettings.newBuilder().build() )
-            .build()
+        val settings = firestoreSettings {
+            setLocalCacheSettings(persistentCacheSettings {  })
+        }
 
         db.firestoreSettings = settings
     }
