@@ -102,13 +102,13 @@ class FirebaseEventDataSource {
                         "UNIQUE_1",
                         "Собрание",
                         Speaker("UNIQUE_1", "Александр", "Голунов", "Владимирович"),
-                        SimpleDateFormat("dd.MM.yyyy hh:mm").parse("17.09.2025 18:30")
+                        SimpleDateFormat("dd.MM.yyyy HH:mm").parse("17.09.2025 18:30")
                     ),
                     SubEvent(
                         "UNIQUE_2",
                         "Собрание",
                         Speaker("UNIQUE_1", "Александр", "Голунов", "Владимирович"),
-                        SimpleDateFormat("dd.MM.yyyy hh:mm").parse("17.09.2025 22:30")
+                        SimpleDateFormat("dd.MM.yyyy HH:mm").parse("17.09.2025 22:30")
                     ),
                 )
             }

@@ -43,15 +43,12 @@ class EventsAdapter() : ListAdapter<Event, EventsAdapter.ViewHolder>(DiffCallbac
 
             titleTextView.text = event.title
             dateTextView.text = SimpleDateFormat("dd.MM").format(dateStart)
-            dateTextViewMin.text = SimpleDateFormat("hh:mm").format(dateStart) + " - " + SimpleDateFormat("hh:mm").format(dateEnd)
-
-
+            dateTextViewMin.text = SimpleDateFormat("HH:mm").format(dateStart) + " - " + SimpleDateFormat("HH:mm").format(dateEnd)
 
             visitButton.setOnClickListener {
-                val intent = Intent(context, EventActivity::class.java)
-//                FIXME: eventId не передаётся
+                val intent = Intent(itemView.context, EventActivity::class.java)
                 intent.putExtra("eventId", event.id)
-                context.startActivity(intent)
+                itemView.context.startActivity(intent)
             }
         }
     }
