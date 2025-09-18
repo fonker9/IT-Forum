@@ -1,6 +1,8 @@
 package com.example.hahaton.ui.home
 
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -41,14 +43,29 @@ class HomeFragment : Fragment() {
 
         replaceFragment(EventsFragment())
 
-        val buttonEvents: Button = binding.buttonEvents
-        buttonEvents.setOnClickListener { replaceFragment(EventsFragment()) }
+        // Цвета
+        val purpleColor = Color.parseColor("#5B00A3")
+        val blueColor = Color.parseColor("#5557FE")
+
+        // Устанавливаем начальное состояние (например, events выбран)
 
         val buttonNews: Button = binding.buttonNews
-        buttonNews.setOnClickListener { replaceFragment(NewsFragment()) }
+        val buttonEvents: Button = binding.buttonEvents
+        buttonEvents.setOnClickListener { replaceFragment(EventsFragment())
+            buttonEvents.backgroundTintList = ColorStateList.valueOf(purpleColor)
+            buttonNews.backgroundTintList = ColorStateList.valueOf(blueColor)
+        }
+        buttonEvents.backgroundTintList = ColorStateList.valueOf(purpleColor)
+        buttonNews.backgroundTintList = ColorStateList.valueOf(blueColor)
+
+        buttonNews.setOnClickListener { replaceFragment(NewsFragment())
+            buttonNews.backgroundTintList = ColorStateList.valueOf(purpleColor)
+            buttonEvents.backgroundTintList = ColorStateList.valueOf(blueColor)}
 
         return root
     }
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

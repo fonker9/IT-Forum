@@ -1,5 +1,6 @@
 package com.example.hahaton.data
 
+import android.util.Log
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
@@ -19,13 +20,16 @@ object OfflineManager {
     }
 
     fun enablePersistence() {
-        val settings = FirebaseFirestoreSettings.Builder()
-            .setLocalCacheSettings( PersistentCacheSettings.newBuilder().build() )
+//        val settings = FirebaseFirestoreSettings.Builder()
+//            .setLocalCacheSettings( PersistentCacheSettings.newBuilder().build() )
+//            .build()
+//
+//        db.firestoreSettings = settings
+        Log.d("MyLog", "кеш сохранен")
+        db.firestoreSettings = FirebaseFirestoreSettings.Builder()
+            .setPersistenceEnabled(true) // включаем кэш
             .build()
-
-        db.firestoreSettings = settings
     }
-
     suspend fun getData(collection: String, documentId: String): DocumentSnapshot? {
         return withContext(Dispatchers.IO) {
             try {

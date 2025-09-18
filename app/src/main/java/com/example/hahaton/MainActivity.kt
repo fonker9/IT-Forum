@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.hahaton.data.OfflineManager
 import com.example.hahaton.data.repository.EventRepository
 import com.example.hahaton.databinding.ActivityMainBinding
 import com.example.hahaton.ui.login.LoginScreen
@@ -37,10 +38,9 @@ class MainActivity : AppCompatActivity() {
         if (currentUser != null) {
             // ПОЛЬЗОВАТЕЛЬ АВТОРИЗОВАН - показываем основной интерфейс
             Log.d("MyLog", "uid = ${currentUser.uid}!")
-
+            OfflineManager.enablePersistence()
             binding = ActivityMainBinding.inflate(layoutInflater)
             setContentView(binding.root)
-
             // Настраиваем навигацию только для авторизованного пользователя
             val navView: BottomNavigationView = binding.navView
             val navController = findNavController(R.id.nav_host_fragment_activity_main)
