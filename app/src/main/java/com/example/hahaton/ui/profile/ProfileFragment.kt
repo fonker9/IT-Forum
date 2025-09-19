@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.activity.compose.setContent
+import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.lifecycle.ViewModelProvider
 import com.example.hahaton.MainActivity
 import com.example.hahaton.databinding.FragmentProfileBinding
@@ -40,7 +41,11 @@ class ProfileFragment : Fragment() {
         LogOut.setOnClickListener {
             signOut(auth)
             Log.d("MyLog", "Log Out is complete!")
-
+        val exit: Button = binding.exit
+            exit.setOnClickListener {
+                // Закрытие приложения // Закрывает все активности приложения
+                System.exit(0)   // Полностью завершает процесс
+            }
             // Переход к Activity с Compose
             val intent = Intent(requireContext(), LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -48,10 +53,6 @@ class ProfileFragment : Fragment() {
             requireActivity().finish()
         }
 
-        val DeleteAccount: Button = binding.deleteAcc
-        DeleteAccount.setOnClickListener {
-
-        }
 
         return root
     }

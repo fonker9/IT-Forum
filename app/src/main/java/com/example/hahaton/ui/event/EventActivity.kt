@@ -47,6 +47,7 @@ class EventActivity : AppCompatActivity() {
                         hightlightButton(binding.eventNavigationSpeakers)
                     }
 
+
 //                    TODO: make dreams come true (create NavigationView with buttons)
 //                    binding.eventNavigationView.setOnItemSelectedListener { item ->
 //                        when (item.itemId) {
