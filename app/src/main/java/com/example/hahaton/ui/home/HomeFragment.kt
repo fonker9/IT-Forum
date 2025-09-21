@@ -19,8 +19,8 @@ import com.example.hahaton.ui.admin.EventAddActivity
 import com.example.hahaton.ui.news.NewsFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.firestore.firestore
+import com.google.firebase.Firebase
 
 class HomeFragment : Fragment() {
     val fs: FirebaseFirestore = Firebase.firestore
